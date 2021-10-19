@@ -23,7 +23,7 @@
     <div class="sidebar-links">
       <ul>
         <div class="active-tab"></div>
-        <li class="tooltip-element" data-tooltip="0">
+        <li class="tooltip-element" data-tooltip="0" onclick="changeContent('homePage.html')">
           <a href="#" class="active" data-active="0">
             <div class="icon">
               <i class="fas fa-qrcode"></i>
@@ -107,7 +107,7 @@
 
 
   <main id="child-view">
-    <h1>My Dashboard</h1>
+    <!-- <h1>My Dashboard</h1>
     <p class="text">
       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur animi voluptatibus cum maxime distinctio
       iste quod deleniti eius, autem voluptates cumque suscipit iure quasi eligendi ullam. Sapiente eligendi porro
@@ -116,10 +116,13 @@
     </p>
     <p class="copyright">
       &copy; 2021 - <span>RUPP</span> All Rights Reserved.
-    </p>
+    </p> -->
   </main>
 
   <script src="JavaScript/sideBar.js"></script>
+  <script>
+    document.getElementById("child-view").innerHTML = '<object type="text/html" data="../views/'+'homePage.html' +'"></object>';
+  </script>
 </body>
 
 </html>
