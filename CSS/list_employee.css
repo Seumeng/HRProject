@@ -1,0 +1,49 @@
+.header {
+    color: #41c473;
+    text-align: center;
+}
+ /* table............ */
+.w_column_20{
+    width: 20% !important;
+}
+.w_column_15{
+    width: 15% !important;
+}
+.w_column_10{
+    width: 10% !important;
+}
+.table_list_employee{
+    border-collapse: collapse; 
+    border: 1px solid black;
+    color: black;
+    width: 100% !important;
+}
+.table_list_employee tbody tr td{
+    text-align: center !important;
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+    border: 1px solid black;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    white-space: nowrap; 
+    max-width: 100px;
+}
+.table_list_employee tbody{
+    background-color: #fff;
+}
+.table_list_employee thead tr th{
+    text-align: center !important;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    word-wrap: break-word;
+    border: 1px solid black;
+}
+.table_list_employee thead{
+    background-color: #41c473 !important;
+    color: white;
+}
+/* end table....... */
+.total {
+    text-align: right;
+    color: #41c473;
+}
