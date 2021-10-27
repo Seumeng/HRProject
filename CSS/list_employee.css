@@ -47,3 +47,12 @@
     text-align: right;
     color: #41c473;
 }
+/* btn ... */
+#edit_em{
+    background-color: #41c473;
+    border-radius: 5px;
+}
+#remove_em{
+    background-color: rgb(245, 84, 84);
+    border-radius: 5px;
+}
