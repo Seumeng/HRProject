@@ -56,3 +56,11 @@
     background-color: rgb(245, 84, 84);
     border-radius: 5px;
 }
+.center {
+    text-align: center;
+    font-size: 18px;
+}
+.submitButn {
+    color: #41c473;
+    font-size: 16px;
+}
