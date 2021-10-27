@@ -19,7 +19,7 @@ shrink_btn.addEventListener("click", () => {
 });
 
 function changeContent(fileName) {
-  document.getElementById("child-view").innerHTML = '<object type="text/html" data="../views/'+fileName +'"></object>';
+  document.getElementById("child-view").innerHTML = '<object type="text/html" data="views/'+fileName +'"></object>';
 }
 
 function moveActiveTab() {
