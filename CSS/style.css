@@ -1,0 +1,12 @@
+#child-view {
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+}
+#child-view object {
+    height: 100%;
+    width: 100%;
+    padding: 0%;
+    margin: 0%;
+}
