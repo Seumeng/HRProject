@@ -2,6 +2,10 @@
     color: #41c473;
     text-align: center;
 }
+.whole_contain {
+    padding-left: 5% !important;
+    padding-right: 5% !important;
+}
  /* table............ */
 .w_column_20{
     width: 20% !important;
