@@ -1,1 +1,308 @@
-<h1>Dashboard</h1>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <!-- <base href="https://demos.telerik.com/kendo-ui/scheduler/event-selection">
+        <style>html { font-size: 14px; font-family: Arial, Helvetica, sans-serif; }</style> -->
+           <!-- jQuery -->
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <!-- FusionCharts -->
+        <script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/fusioncharts.js"></script>
+        <!-- jQuery-FusionCharts -->
+        <script type="text/javascript" src="https://rawgit.com/fusioncharts/fusioncharts-jquery-plugin/develop/dist/fusioncharts.jqueryplugin.min.js"></script>
+        <!-- Fusion Theme -->
+        <script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/themes/fusioncharts.theme.fusion.js"></script>
+        <script src="jquery-3.5.1.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/themes/fusioncharts.theme.fusion.js"></script>
+
+        <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2021.3.914/styles/kendo.default-main.min.css" />
+    
+        <script src="https://kendo.cdn.telerik.com/2021.3.914/js/jquery.min.js"></script>
+        
+        
+        <script src="https://kendo.cdn.telerik.com/2021.3.914/js/kendo.all.min.js"></script>
+        
+        <script src="https://kendo.cdn.telerik.com/2021.3.914/js/kendo.timezones.min.js"></script>
+
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        </head>
+<style>
+  .box {
+    position: relative;
+    width: 25rem;
+    height: 5rem;
+    font-size: 20px;
+    padding: 20px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    border: 1px solid #f2f2f2;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+
+    .box:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border-radius: 5px;
+    opacity: 0;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: all .6s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+
+    .box:hover {
+    transform: scale(1.02);
+    }
+
+    .box:hover:after {
+    opacity: 1;
+    }
+    .chart-wrapper {
+      width: 100%;
+      margin: auto;
+    }
+
+</style>
+
+<body>
+<script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart1);
+      google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart1() {
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Total per month'],
+          ['logistics',  20],
+          ['EBI',  10],
+          ['CTR',  5],
+          ['SAS', 7],
+          ['EMR',  15]
+        ]);
+
+        var options = {
+          title: 'Total Project For Developer'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+   
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Year', 'Sales', 'Expenses', 'Profit'],
+          ['2018', 600, 400, 200],
+          ['2019', 800, 460, 250],
+          ['2020', 1000, 600, 350],
+          ['2021', 1110, 800, 550]
+        ]);
+
+        var options = {
+          chart: {
+            title: 'Company Performance',
+            subtitle: 'Sales, Expenses, and Profit: 2018-2021',
+          },
+          bars: 'vertical',
+          vAxis: {format: 'decimal'},
+          height: 400,
+          colors: ['#1b9e77', '#d95f02', '#7570b3']
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('chart_div'));
+
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+
+        var btns = document.getElementById('btn-group');
+
+        btns.onclick = function (e) {
+
+          if (e.target.tagName === 'BUTTON') {
+            options.vAxis.format = e.target.id === 'none' ? '' : e.target.id;
+            chart.draw(data, google.charts.Bar.convertOptions(options));
+          }
+        }
+      }
+      
+      $(function() {
+      $("#scheduler").kendoScheduler({
+        date: new Date("2013/6/13"),
+        startTime: new Date("2013/6/13 07:00 AM"),
+        height: 600,
+        selectable: true,
+        editable: {
+            resize: false
+        },
+        views: [
+            "day",
+            { type: "week", selected: true },
+            "month",
+            "timeline"
+        ],
+        timezone: "Etc/UTC",
+        dataSource: {
+            batch: true,
+            transport: {
+                read: {
+                    url: "https://demos.telerik.com/kendo-ui/service/tasks",
+                    dataType: "jsonp"
+                },
+                update: {
+                    url: "https://demos.telerik.com/kendo-ui/service/tasks/update",
+                    dataType: "jsonp"
+                },
+                create: {
+                    url: "https://demos.telerik.com/kendo-ui/service/tasks/create",
+                    dataType: "jsonp"
+                },
+                destroy: {
+                    url: "https://demos.telerik.com/kendo-ui/service/tasks/destroy",
+                    dataType: "jsonp"
+                },
+                parameterMap: function(options, operation) {
+                    if (operation !== "read" && options.models) {
+                        return {models: kendo.stringify(options.models)};
+                    }
+                }
+            },
+            schema: {
+                model: {
+                    id: "taskId",
+                    fields: {
+                        taskId: { from: "TaskID", type: "number" },
+                        title: { from: "Title", defaultValue: "No title", validation: { required: true } },
+                        start: { type: "date", from: "Start" },
+                        end: { type: "date", from: "End" },
+                        startTimezone: { from: "StartTimezone" },
+                        endTimezone: { from: "EndTimezone" },
+                        description: { from: "Description" },
+                        recurrenceId: { from: "RecurrenceID" },
+                        recurrenceRule: { from: "RecurrenceRule" },
+                        recurrenceException: { from: "RecurrenceException" },
+                        isAllDay: { type: "boolean", from: "IsAllDay" }
+                    }
+                }
+            }
+        }
+    });
+});
+
+     
+</script>
+    <table cellpadding="0" cellspacing= "0" style="width:100%; padding: 20px; margin: auto;overflow: hidden;">
+        <tr>
+            <td class="box" style="width: 21%;text-align: center;line-height: 25px;">
+                <table style="width: 100%;">
+                  	<tr>
+                        <td style="width: 50%;">
+                            <img src="../image/idea.png" alt="" style="width: 50px; height: auto;">
+                        </td>
+                        <td style="width: 50%;">
+                          <div style="font-size: 2em;font-weight: bold;">
+                            100
+                          </div>
+                          <br>
+                          <div style="font-size: 1em;">
+                            Project
+                          </div>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td></td>
+            <td class="box" style="width: 21%;text-align: center;line-height: 25px;">
+              <table style="width: 100%;">
+                  <tr>
+                      <td style="width: 50%;">
+                          <img src="../image/dollar.png" alt="" style="width: 50px; height: auto;">
+                      </td>
+                      <td style="width: 50%;">
+                        <div style="font-size: 2em;font-weight: bold;">
+                           40
+                        </div>
+                        <br>
+                        <div style="font-size: 1em;">
+                          Clients
+                        </div>
+                      </td>
+                  </tr>
+              </table>
+            </td>
+            <td></td>
+            <td class="box" style="width: 21%;text-align: center;line-height: 25px;">
+              <table style="width: 100%;">
+                  <tr>
+                      <td style="width: 50%;">
+                          <img src="../image/diamond.png" alt="" style="width: 50px; height: auto;">
+                      </td>
+                      <td style="width: 50%;">
+                        <div style="font-size: 2em;font-weight: bold;">
+                           30
+                        </div>
+                        <br>
+                        <div style="font-size: 1em;">
+                          Tasks
+                        </div>
+                      </td>
+                  </tr>
+              </table>
+            </td>
+            <td></td>
+            <td class="box" style="width: 21%;text-align: center;line-height: 25px;">
+              <table style="width: 100%;">
+                  <tr>
+                      <td style="width: 50%;">
+                          <img src="../image/employee-of-the-month.png" alt="" style="width: 50px; height: auto;">
+                      </td>
+                      <td style="width: 50%;">
+                        <div style="font-size: 2em;font-weight: bold;">
+                           150
+                        </div>
+                        <br>
+                        <div style="font-size: 1em;">
+                            	Employee
+                        </div>
+                      </td>
+                  </tr>
+              </table>
+            </td>
+        </tr>
+    </table>
+    <table cellpadding="0" cellspacing= "0" style="width:100%; padding: 20px; margin: auto;overflow: hidden;">
+      <tr>
+        <td style="width: 47.5%;border: 1px solid #f2f2f2;box-shadow: 0 1px 2px rgba(26, 25, 25, 0.1);">
+            <div id="chart_div"></div>
+          <br/>
+          <div id="btn-group">
+            <button class="button button-blue" id="none">No Format</button>
+            <button class="button button-blue" id="scientific">Scientific Notation</button>
+            <button class="button button-blue" id="decimal">Decimal</button>
+            <button class="button button-blue" id="short">Short</button>
+          </div>
+        </td>
+        <td style="width: 5%;"></td>
+        <td style="width: 47.5%;border: 1px solid #f2f2f2;box-shadow: 0 1px 2px rgba(26, 25, 25, 0.1);">
+          <div id="piechart" style="width: 500px; height: 500px;"></div>
+        </td>
+      </tr>
+    </table>
+    <table cellpadding="0" cellspacing= "0" style="width:100%; padding: 20px; margin: auto;overflow: hidden;">
+      <tr>
+        <td style="width: 100%;">
+          <div id="example">
+            <div id="scheduler"></div>
+        </td>
+      </tr>
+    </table>
+    
+</body>
+
+</html>
