@@ -54,11 +54,11 @@
 /* btn ... */
 #edit_em{
     background-color: #41c473;
-    border-radius: 5px;
+    border-radius: 4px;
 }
 #remove_em{
     background-color: rgb(245, 84, 84);
-    border-radius: 5px;
+    border-radius: 4px;
 }
 .center {
     text-align: center;
@@ -67,7 +67,4 @@
 .submitButn {
     color: #41c473;
     font-size: 16px;
-    /* width: 230px;
-    height: 30px;
-    text-align: center; */
 }
